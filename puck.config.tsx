@@ -4,10 +4,9 @@ import { FormContainer } from "./app/components/form/FormContainer";
 import { BackToEditor } from "./app/components/general/GoToEditor";
 
 type Props = {
-  // HeadingBlock: { title: string };
   BackToEditor: { onClick: () => void }
   FormField: {
-    type: string, label: string, defaultValue?: string, selectOptions?: { optionName: string }[], onChange: () => void;
+    type: string, label: string, defaultValue?: string, selectOptions?: { optionName: string }[], onChange?: (e: InputEvent) => void;
   },
   FormContainer: any,
 };
@@ -20,7 +19,7 @@ const FORM_FIELD_CONFIG = {
       { label: 'Text Area', value: 'textarea' },
       { label: 'Radio', value: 'radio' },
       { label: 'Number', value: 'number' },
-      { label: 'select', value: 'select' },
+      { label: 'Select', value: 'select' },
     ]
   },
   onChange: () => { },
@@ -28,6 +27,14 @@ const FORM_FIELD_CONFIG = {
 }
 
 export const config: Config<Props> = {
+  categories: {
+    Basic: {
+      components: ['BackToEditor']
+    },
+    Form: {
+      components: ['FormContainer', 'FormField']
+    }
+  },
   components: {
     BackToEditor: {
       render: BackToEditor,
@@ -67,6 +74,7 @@ export const config: Config<Props> = {
         if (data.props.type === 'select' || data.props.type === 'radio') {
           return {
             ...FORM_FIELD_CONFIG,
+            defaultValue: undefined,
             selectOptions: {
               type: 'array',
               arrayFields: { optionName: { type: 'text' } },
@@ -78,15 +86,15 @@ export const config: Config<Props> = {
           return {
             ...FORM_FIELD_CONFIG,
             defaultValue: { type: 'number' },
+            onChange: data.props.onChange
           }
         }
-        return { ...fields, defaultValue: { type: 'text' } }
+        return { ...fields, defaultValue: { type: 'text' }, onChange: data.props.onChange }
       },
       defaultProps: {
         label: 'My label',
         type: 'text',
         selectOptions: [{ optionName: "First Option" }],
-        onChange: () => { },
       }
     }
   }
