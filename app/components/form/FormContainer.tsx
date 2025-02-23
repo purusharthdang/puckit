@@ -1,6 +1,6 @@
 import { Button, DropZone } from "@measured/puck"
 
-export const FormContainer = ({ layout, formTitle = 'My Form', submitText = 'Submit', btnPosition }) =>
+export const FormContainer = ({ layout, formTitle = 'My Form', submitText = 'Submit' }) =>
 (
     <form
         className='p-6 space-y-4 bg-white rounded-lg border border-gray-300 flex-col'

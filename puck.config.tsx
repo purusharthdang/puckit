@@ -4,10 +4,8 @@ import { FormContainer } from "./app/components/form/FormContainer";
 import { BackToEditor } from "./app/components/general/GoToEditor";
 
 type Props = {
-  BackToEditor: { onClick: () => void }
-  FormField: {
-    type: string, label: string, defaultValue?: string, selectOptions?: { optionName: string }[], onChange?: (e: InputEvent) => void;
-  },
+  BackToEditor: any
+  FormField: any,
   FormContainer: any,
 };
 
@@ -38,9 +36,6 @@ export const config: Config<Props> = {
   components: {
     BackToEditor: {
       render: BackToEditor,
-      defaultProps: {
-        onClick: () => { }
-      }
     },
     FormContainer: {
       render: FormContainer,
@@ -69,7 +64,7 @@ export const config: Config<Props> = {
     },
     FormField: {
       render: FormField,
-      resolveFields: (data) => {
+      resolveFields: (data): any => {
         const fields = FORM_FIELD_CONFIG;
         if (data.props.type === 'select' || data.props.type === 'radio') {
           return {
