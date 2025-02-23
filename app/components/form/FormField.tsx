@@ -1,3 +1,4 @@
+'use client'
 import { AutoField, Button, FieldLabel } from '@measured/puck';
 import React from 'react';
 

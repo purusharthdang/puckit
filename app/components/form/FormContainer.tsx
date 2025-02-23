@@ -1,3 +1,4 @@
+'use client'
 import { Button, DropZone } from "@measured/puck"
 
 export const FormContainer = ({ layout, formTitle = 'My Form', submitText = 'Submit' }) =>

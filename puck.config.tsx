@@ -1,3 +1,4 @@
+'use client'
 import { Button, type Config } from "@measured/puck";
 import { FormField } from "./app/components/form/FormField";
 import { FormContainer } from "./app/components/form/FormContainer";
